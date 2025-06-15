@@ -1,111 +1,108 @@
-# Adeniyi's Blog API
+# 📝 Adeniyi's Blog API
 
-A RESTful blogging API built with **Node.js**, **Express**, and **MongoDB**, allowing users to sign up, create and manage blog posts, and publish them to the public. Built using the MVC pattern and secured with **JWT-based authentication**.
-
-## ✨ Features
-
-* ✅ User Signup and Signin
-* ✅ JWT Authentication
-* ✅ Create, Read, Update, and Delete (CRUD) blog posts
-* ✅ Blog post states: `draft` or `published`
-* ✅ Authenticated users can manage their own blogs
-* ✅ Public access to published blog posts
-* ✅ Optional filtering, searching, and pagination (basic implementation)
-* 🧪 Route-by-route testing with Jest & Supertest
+A RESTful blog API built with **Node.js**, **Express**, and **MongoDB**, following the **MVC architecture**. This project enables user authentication, blog creation, publishing, updating, and deletion with both public and private access layers.
 
 ---
 
-## 🔗 Live Demo
+## 📌 Features
 
-🚧 Deployment pending...
-Will be hosted on **PipeOps** or **Heroku**.
+* **User Authentication**
 
----
+  * Signup & Login using JWT
+* **Blog Management**
 
-## 📂 API Endpoints
+  * Create blogs in draft or publish state
+  * Update, delete, and view individual blogs
+  * View all published blogs (public)
+* **Blog Accessibility**
 
-**Base Path**: `/api/v1/BlogApi`
+  * Authenticated users can manage their own blogs
+  * Anyone can view published blogs
+* **Filtering & Sorting**
 
-### Auth Routes
+  * Sort blogs by timestamp
+  * Filter by author or title
+* **Search & Pagination**
 
-| Method | Endpoint       | Description         |
-| ------ | -------------- | ------------------- |
-| POST   | `/auth/signup` | Register a new user |
-| POST   | `/auth/signin` | Login and get token |
+  * Keyword search by title or description
+  * Paginate large sets of published blogs
+* **Test Coverage**
 
-### Blog Routes (Protected)
-
-| Method | Endpoint             | Description                      |
-| ------ | -------------------- | -------------------------------- |
-| POST   | `/blogs`             | Create a blog (draft by default) |
-| GET    | `/blogs/me`          | View all blogs by logged-in user |
-| GET    | `/blogs/:id`         | Get a specific blog post         |
-| PATCH  | `/blogs/:id`         | Update a blog post               |
-| PATCH  | `/blogs/:id/publish` | Publish a blog                   |
-| DELETE | `/blogs/:id`         | Delete a blog post               |
-
-### Public Blog Routes
-
-| Method | Endpoint | Description              |
-| ------ | -------- | ------------------------ |
-| GET    | `/blogs` | View all published blogs |
+  * Routes tested using Jest & Supertest (locally)
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Demo
 
-* **Backend**: Node.js, Express
-* **Database**: MongoDB, Mongoose
-* **Authentication**: JWT
-* **Testing**: Jest, Supertest
-* **Dev Tools**: Nodemon, dotenv, cross-env
+You can test the live API using the following public endpoint:
+
+> 🟢 **GET All Published Blogs**
+> [`https://adeniyi-blog-api.onrender.com/BlogApi/v1/blogs/`](https://adeniyi-blog-api.onrender.com/BlogApi/v1/blogs/)
+
+This will return all published blog posts in JSON format.
+Use tools like **Postman**, **Hoppscotch**, or your browser.
 
 ---
 
-## 🛆 Installation
+## 📢 Sample Postman Request
 
-```bash
-git clone https://github.com/your-username/adeniyi-blog-api.git
-cd adeniyi-blog-api
-npm install
+**Example: Creating a New Blog (Draft)**
+
+```
+POST /BlogApi/v1/blogs/
+Authorization: Bearer <your_token_here>
+Content-Type: application/json
+
+{
+  "title": "My First Blog Post",
+  "description": "This is a test blog post from Postman.",
+  "tags": ["test", "postman"],
+  "body": "Here’s the content of the blog...",
+  "state": "draft"
+}
 ```
 
-Create a `.env` file in the root directory and add the following:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=1d
-```
+Replace `<your_token_here>` with a valid token from your login response.
 
 ---
 
-## 🚀 Usage
+## 💠 Installation
 
-```bash
-npm run dev     # Starts server in development mode
-npm start       # Starts server in production mode
-npm test        # Run all tests
-```
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/your-username/adeniyi-blog-api.git
+   cd adeniyi-blog-api
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with the following:
+
+   ```
+   PORT=5000
+   MONGODB_URI=your-mongodb-connection-uri
+   JWT_SECRET=your_jwt_secret_key
+   ```
+
+4. Start the server
+
+   ```bash
+   npm run dev
+   ```
 
 ---
 
+## 🧲 API Testing Collection
 
-## 📬 API Testing Collection
-
-📬 **Postman Collection:** https://drive.google.com/file/d/1f4XAcvGvgdWdmbL__CvFOM5RwVIhDk8f/view?usp=drive_link
-
----
-
-## 👨🏾‍💻 Author
-
-**Adeniyi Anjorin**
-
-> Backend Developer | Node.js | MongoDB
+Postman collection will be provided soon for easy local or remote testing of all endpoints.
 
 ---
 
-## 📃 License
+## 📜 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
